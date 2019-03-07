@@ -156,6 +156,89 @@ function naw__menu() {
 }
 naw__menu();
 
+//кастомный селект
+
+var SelectList = {
+    fn: {
+        prepare: function prepare() {
+            $('.select').each(function () {
+                var select = $('<div class="select-box"/>');
+                var html = '<div class="trigger"></div>';
+                html += '<ul class="choices">';
+                var $option = $(this);
+                $option.find('option').each(function (key, val) {
+                    var value = $(val).val();
+
+                    html += '<a href="#" data-value="' + value + '">' + value + '</a>';
+                });
+                html += '</ul>';
+                select.html(html).insertBefore($($option));
+            });
+        },
+
+        showHide: function showHide() {
+            $('.trigger', '.select-box').on('click', function () {
+                var $trigger = $(this);
+                var list = $trigger.next();
+                if (list.is(':hidden')) {
+                    list.slideDown(300);
+                    list.css('display', 'flex');
+                    $(this).addClass('open');
+                } else {
+                    $(this).removeClass('open');
+                    list.slideUp(300);
+                }
+            });
+        },
+
+        view: function view() {
+            $('body').on('click', function () {
+                var value = $('.select');
+                // console.log($(value).val())
+            });
+        },
+
+        select: function select() {
+            var $trigger = $('.trigger');
+            var $select = $('.select');
+            var $view = $('.view');
+            var startText = $($trigger).siblings(".choices").find('a:first-child').text();
+            // console.log($($trigger).siblings(".choices").find('li:first-child').text())
+            $($trigger).text(startText);
+            $('a', '.choices').on('click', function () {
+                $(this).parents('.calc__form_row').find('.trigger').removeClass('open');
+                var $li = $(this);
+
+                var value = $li.data('value');
+                // console.log($(this).parents('.select-box').find('.trigger'))
+                $(this).parents('.select-box').find('.trigger').text(value);
+
+                $li.parent().slideUp(300, function () {
+
+                    $(this).parents('.calc__form_row').find('.select').val(value);
+                    $view.trigger('click');
+                });
+            });
+        }
+    },
+
+    init: function init() {
+        for (var method in this.fn) {
+            this.fn[method]();
+        }
+    }
+};
+
+$(function () {
+    SelectList.init();
+});
+
+// кастомный селект=======================end
+
+$('.filter__item__select').on('click', function () {
+    $(this).parent().find('.filter__item__list').toggleClass('open');
+});
+
 /***/ })
 /******/ ]);
 //# sourceMappingURL=main.js.map
