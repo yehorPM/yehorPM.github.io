@@ -210,7 +210,6 @@ var SelectList = {
                 var $li = $(this);
 
                 var value = $li.data('value');
-                // console.log($(this).parents('.select-box').find('.trigger'))
                 $(this).parents('.select-box').find('.trigger').text(value);
 
                 $li.parent().slideUp(300, function () {
@@ -235,9 +234,25 @@ $(function () {
 
 // кастомный селект=======================end
 
-$('.filter__item__select').on('click', function () {
-    $(this).parent().find('.filter__item__list').toggleClass('open');
-});
+
+function filterTabs() {
+    var filterSelect = $('.filter__item__select');
+    $(filterSelect).on('click', function () {
+        $(this).parent().find('.filter__item__list').toggleClass('open');
+        if ($(this).parent().find('.filter__item__list').hasClass('open')) {
+            $(this).addClass('open');
+        } else {
+            $(this).removeClass('open');
+        }
+    });
+    $('.filter__item__list .item').on('click', function () {
+        var text = $(this).text();
+        $(filterSelect).find('.filter__item__select__caption').text(text);
+        $('.filter__item__list').removeClass('open');
+        $(filterSelect).removeClass('open');
+    });
+}
+filterTabs();
 
 /***/ })
 /******/ ]);
