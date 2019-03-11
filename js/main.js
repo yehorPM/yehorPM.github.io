@@ -263,6 +263,16 @@ function starRang() {
 starRang();
 //===========================================================
 
+$('.tabs-bar__wrap__button').find('.item').on('click', function () {
+    $('.tabs-bar__wrap__button').find('.item').removeClass('active');
+    $(this).addClass('active');
+});
+
+$('.filter__item').find('.item').on('click', function () {
+    $('.filter__item').find('.item').removeClass('active');
+    $(this).addClass('active');
+});
+
 /***/ })
 /******/ ]);
 //# sourceMappingURL=main.js.map
