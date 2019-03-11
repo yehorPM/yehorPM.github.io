@@ -254,12 +254,14 @@ function filterTabs() {
 }
 filterTabs();
 
+// fiter ==================================================
 function starRang() {
     var stars = $('.stars');
     var rating = $('.rating').text();
     console.log(rating);
 }
 starRang();
+//===========================================================
 
 /***/ })
 /******/ ]);
