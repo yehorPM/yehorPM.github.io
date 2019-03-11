@@ -1,3 +1,8 @@
+.svg-arrow-right-dims {
+	width: 18px;
+	height: 18px;
+}
+
 .svg-arrow__btn-dims {
 	width: 24px;
 	height: 24px;
@@ -43,7 +48,17 @@
 	height: 18px;
 }
 
+.svg-share-dims {
+	width: 24px;
+	height: 24px;
+}
+
 .svg-slick_arrow-dims {
+	width: 24px;
+	height: 24px;
+}
+
+.svg-star-dims {
 	width: 24px;
 	height: 24px;
 }

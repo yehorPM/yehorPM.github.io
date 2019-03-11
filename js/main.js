@@ -254,6 +254,13 @@ function filterTabs() {
 }
 filterTabs();
 
+function starRang() {
+    var stars = $('.stars');
+    var rating = $('.rating').text();
+    console.log(rating);
+}
+starRang();
+
 /***/ })
 /******/ ]);
 //# sourceMappingURL=main.js.map
