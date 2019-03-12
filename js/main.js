@@ -273,6 +273,21 @@ $('.filter__item').find('.item').on('click', function () {
     $(this).addClass('active');
 });
 
+$(window).on('scroll', function () {
+    var btnTop = $('.social__fix');
+    if ($(window).scrollTop() > 500) {
+        $(".social__fix").addClass("fixed");
+    } else {
+        //remove the background property so it comes transparent again (defined in your css)
+        $(".social__fix").removeClass("fixed");
+    }
+});
+// $(window).on("scroll", function () {
+//     if (come("#btnTop")) {
+//         $(".go-to-top").removeClass("fixed");
+//     }
+// });
+
 /***/ })
 /******/ ]);
 //# sourceMappingURL=main.js.map
