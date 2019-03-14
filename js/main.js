@@ -234,7 +234,7 @@ $(function () {
 
 // кастомный селект=======================end
 
-
+//табы для фильтра==================================
 function filterTabs() {
     var filterSelect = $('.filter__item__select');
     $(filterSelect).on('click', function () {
@@ -253,15 +253,17 @@ function filterTabs() {
     });
 }
 filterTabs();
+//табы для фильтра==================================end
 
-// fiter ==================================================
+//рейтинг - звезды ======================================
 function starRang() {
     var stars = $('.stars');
     var rating = $('.rating').text();
     console.log(rating);
 }
 starRang();
-//===========================================================
+//рейтинг - звезды ======================================end
+
 
 $('.tabs-bar__wrap__button').find('.item').on('click', function () {
     $('.tabs-bar__wrap__button').find('.item').removeClass('active');
@@ -288,7 +290,7 @@ $(window).on('scroll', function () {
 //     }
 // });
 
-
+//аккордеон========================================================
 function acordion() {
     $('.open_acordion').on('click', function () {
 
@@ -306,6 +308,7 @@ function acordion() {
     });
 }
 acordion();
+//аккордеон========================================================end
 
 /***/ })
 
