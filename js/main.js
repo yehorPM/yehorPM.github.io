@@ -288,6 +288,25 @@ $(window).on('scroll', function () {
 //     }
 // });
 
+
+function acordion() {
+    $('.open_acordion').on('click', function () {
+
+        if ($(this).parent().parent().find('.block__acordion').hasClass('open')) {
+            $(this).parent().parent().find('.block__acordion').removeClass('open');
+            $(this).find('span').text('Раскрыть').addClass('active');
+            $(this).removeClass('active');
+        } else {
+            $('.block__acordion').removeClass('open');
+            $(this).parent().parent().find('.block__acordion').addClass('open');
+            $('.open_acordion').find('span').text('Раскрыть');
+            $(this).find('span').text('Cвернуть').removeClass('active');
+            $(this).addClass('active');
+        }
+    });
+}
+acordion();
+
 /***/ })
 
 /******/ });
