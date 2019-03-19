@@ -82,7 +82,7 @@ module.exports = __webpack_require__(5);
 console.log('Hello from main.js!');
 
 $('.insurance-products').slick({
-    infinite: false,
+    infinite: true,
     dots: false,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -93,9 +93,10 @@ $('.insurance-products').slick({
     prevArrow: $('.insurance__top .prevSlick'),
     nextArrow: $('.insurance__top .nextSlick')
 });
+
 function opacitySlide() {
-    var slideActive = $('.slick-active');
-    var slide = $('.slick-slide');
+    var slideActive = $('.insurance-products .slick-active');
+    var slide = $('.insurance-products .slick-slide');
     $(slide).addClass('opacity');
     $(slide[0]).removeClass('opacity');
     $(slide[1]).removeClass('opacity');
@@ -103,6 +104,7 @@ function opacitySlide() {
     $(slideActive).removeClass('opacity');
     $(slideActive[3]).addClass('opacity');
 }
+
 opacitySlide();
 $('.insurance-products').on('swipe', function (event, slick, currentSlide, nextSlide) {
     opacitySlide();
@@ -142,6 +144,7 @@ function about__text() {
         }
     });
 }
+
 about__text();
 
 function naw__menu() {
@@ -154,7 +157,18 @@ function naw__menu() {
         }
     });
 }
+
 naw__menu();
+
+$('.hero__bg__wrap').slick({
+    infinite: true,
+    dots: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 4000
+});
 
 //кастомный селект
 
@@ -244,14 +258,17 @@ function filterTabs() {
         } else {
             $(this).removeClass('open');
         }
-    });
-    $('.filter__item__list .item').on('click', function () {
-        var text = $(this).text();
-        $(filterSelect).find('.filter__item__select__caption').text(text);
-        $('.filter__item__list').removeClass('open');
-        $(filterSelect).removeClass('open');
+
+        $(this).parent().find('.filter__item__list .item').on('click', function () {
+            console.log($(this).parent().parent());
+            var text = $(this).text();
+            $(this).parent().parent().find('.filter__item__select__caption').text(text);
+            $(this).parent().removeClass('open');
+            $(this).parent().parent().find('.filter__item__select').removeClass('open');
+        });
     });
 }
+
 filterTabs();
 //табы для фильтра==================================end
 
@@ -261,6 +278,7 @@ function starRang() {
     var rating = $('.rating').text();
     console.log(rating);
 }
+
 starRang();
 //рейтинг - звезды ======================================end
 
@@ -307,6 +325,7 @@ function acordion() {
         }
     });
 }
+
 acordion();
 //аккордеон========================================================end
 
@@ -322,6 +341,36 @@ $(function () {
     // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
     // It can be called as many times as necessary; previously converted input fields will not be converted again
     window.emojiPicker.discover();
+});
+
+//menu mobile
+$('.mobile__menu').on('click', function () {
+    $('.mibile__menu__wrap').addClass('open');
+});
+$('.mibile__menu__wrap').find('.btn__close').on('click', function () {
+    $('.mibile__menu__wrap').removeClass('open');
+});
+
+//--------------------------------------------
+$('.vocabulary__mini').on('click', function () {
+    if (event.target != this) {
+        return;
+    }
+    $('.vocabulary__mini').toggleClass('open');
+    $(this).find('.close__modal').on('click', function () {
+        $('.vocabulary__mini').removeClass('open');
+    });
+});
+$('.request-call').on('click', function () {
+    $('.modal__call').parents('.modal__wrap').addClass('active');
+
+    $('.modal__call').find('.close__modal').on('click', function () {
+        $(this).parents('.modal__wrap').removeClass('active');
+    });
+});
+$('.notification__nav__tabs').find('.tabs').on('click', function () {
+    $('.notification__nav__tabs').find('.tabs').removeClass('active');
+    $(this).addClass('active');
 });
 
 /***/ })
