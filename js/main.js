@@ -369,9 +369,11 @@ $('.vocabulary__mini').on('click', function () {
 });
 $('.request-call,.btn__request-call').on('click', function () {
     $('.modal__call').parents('.modal__wrap').addClass('active');
+    $('body').addClass('no__scroll');
 
     $('.modal__call').find('.close__modal').on('click', function () {
         $(this).parents('.modal__wrap').removeClass('active');
+        $('body').removeClass('no__scroll');
     });
 });
 $('.notification__nav__tabs').find('.tabs').on('click', function () {
