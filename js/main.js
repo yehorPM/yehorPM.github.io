@@ -148,7 +148,7 @@ function about__text() {
 about__text();
 
 function naw__menu() {
-    $('.nav__link').on('click', function () {
+    $('.nav__link, .header__wrapper__about__item__lang').on('click', function () {
         if ($(this).find('.nav__link__sub').length > 0 && !$(this).hasClass('open')) {
             $('.nav__link').removeClass('open');
             $(this).addClass('open');
@@ -367,7 +367,7 @@ $('.vocabulary__mini').on('click', function () {
         $('.vocabulary__mini').removeClass('open');
     });
 });
-$('.request-call').on('click', function () {
+$('.request-call,.btn__request-call').on('click', function () {
     $('.modal__call').parents('.modal__wrap').addClass('active');
 
     $('.modal__call').find('.close__modal').on('click', function () {
