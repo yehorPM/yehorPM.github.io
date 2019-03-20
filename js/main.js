@@ -307,7 +307,13 @@ $(window).on('scroll', function () {
 //         $(".go-to-top").removeClass("fixed");
 //     }
 // });
-
+$(window).on('scroll', function () {
+    if ($(window).scrollTop() > 40) {
+        $('.container-header').addClass('mini');
+    } else {
+        $('.container-header').removeClass('mini');
+    }
+});
 //аккордеон========================================================
 function acordion() {
     $('.open_acordion').on('click', function () {
