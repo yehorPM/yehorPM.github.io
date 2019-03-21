@@ -388,8 +388,14 @@ $('.notification__nav__tabs').find('.tabs').on('click', function () {
 $('.request-call__mobile__wrap__button').on('click', function () {
     $('.request-call__mobile__wrap').toggleClass('open');
     $(this).text('Закрыть');
+    $('body').css('position', 'fixed');
+    $('body').addClass('no__scroll');
+    $('body').css('width', '100%');
     if (!$('.request-call__mobile__wrap').hasClass('open')) {
         $(this).text('Заказать звонок');
+        $('body').css('position', '');
+        $('body').css('width', '');
+        $('body').removeClass('no__scroll');
     }
 });
 
