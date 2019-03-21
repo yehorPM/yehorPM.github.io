@@ -352,9 +352,13 @@ $(function () {
 //menu mobile
 $('.mobile__menu').on('click', function () {
     $('.mibile__menu__wrap').addClass('open');
+    if ($(window).width() < 589) {
+        $('body').addClass('no__scroll');
+    }
 });
 $('.mibile__menu__wrap').find('.btn__close').on('click', function () {
     $('.mibile__menu__wrap').removeClass('open');
+    $('body').removeClass('no__scroll');
 });
 
 //--------------------------------------------
