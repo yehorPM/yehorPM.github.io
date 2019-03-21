@@ -385,6 +385,14 @@ $('.notification__nav__tabs').find('.tabs').on('click', function () {
     $(this).addClass('active');
 });
 
+$('.request-call__mobile__wrap__button').on('click', function () {
+    $('.request-call__mobile__wrap').toggleClass('open');
+    $(this).text('Закрыть');
+    if (!$('.request-call__mobile__wrap').hasClass('open')) {
+        $(this).text('Заказать звонок');
+    }
+});
+
 /***/ })
 
 /******/ });
