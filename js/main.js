@@ -120,7 +120,9 @@ $('.clients').slick({
     arrows: true,
     centerMode: false,
     variableWidth: true,
-    focusOnSelect: true
+    focusOnSelect: true,
+    prevArrow: $('.clients-caption__top .prevSlick'),
+    nextArrow: $('.clients-caption__top .nextSlick')
 });
 $('.reviews__slide__wrap').slick({
     infinite: true,
@@ -145,10 +147,13 @@ function about__text() {
     });
 }
 
-about__text();
+// about__text()
 
 function naw__menu() {
-    $('.nav__link, .header__wrapper__about__item__lang').on('click', function () {
+    $('body').on('click', '.nav__link, .header__wrapper__about__item__lang', function () {
+        $('.nav__link__sub').click(function (event) {
+            event.stopPropagation();
+        });
         if ($(this).find('.nav__link__sub').length > 0 && !$(this).hasClass('open')) {
             $('.nav__link').removeClass('open');
             $(this).addClass('open');
@@ -157,19 +162,44 @@ function naw__menu() {
         }
     });
 }
-
 naw__menu();
+
+$(document).mouseup(function (e) {
+    // событие клика по веб-документу
+    var div = $(".nav__link, .header__wrapper__about__item__lang"); // тут указываем ID элемента
+    if (!div.is(e.target) // если клик был не по нашему блоку
+    && div.has(e.target).length === 0) {
+        // и не по его дочерним элементам
+        $('.nav__link, .header__wrapper__about__item__lang').removeClass('open'); // скрываем его
+    }
+});
 
 $('.hero__bg__wrap').slick({
     infinite: true,
-    dots: true,
+    dots: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     autoplay: true,
-    autoplaySpeed: 4000
+    autoplaySpeed: 4000,
+    asNavFor: '.slider__wrap__hero'
 });
-
+// $('.slider-for').slick({
+//     slidesToShow: 1,
+//     slidesToScroll: 1,
+//     arrows: false,
+//     fade: true,
+//     asNavFor: '.slider-nav'
+// });
+$('.slider__wrap__hero').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    asNavFor: '.hero__bg__wrap',
+    dots: true,
+    centerMode: false,
+    focusOnSelect: true
+});
 //кастомный селект
 
 var SelectList = {
