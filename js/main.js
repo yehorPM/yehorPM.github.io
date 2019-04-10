@@ -424,6 +424,51 @@ $('.request-call__mobile__wrap__button').on('click', function () {
     }
 });
 
+//====================================container LK tabs
+
+function tabs__personal__area() {
+
+    $(function () {
+        $('.persolan-area__conteiner__btn-tabs .item:first').addClass('active');
+        $('.personal-area .persolan-area__conteiner__tabs:first').css('display', 'block');
+    });
+    //обработчик кликов по неактивным табам
+    $('.persolan-area__conteiner__btn-tabs .item').not('.active').click(function () {
+        //номер таба
+        var index = $(this).index();
+        //соответствующая закладка
+        var content = $('.personal-area .persolan-area__conteiner__tabs').eq(index);
+        //таб сделать активным, остальные неактивными
+        $(this).addClass('active').siblings().removeClass('active');
+        //открыть нужную вкладку, закрыть остальные
+        $('.personal-area .persolan-area__conteiner__tabs').css('display', 'none').eq(index).css('display', 'block');
+    });
+}
+
+tabs__personal__area();
+
+function tabs__personal__area__mobile() {
+    var filterSelect = $('.persolan-area__conteiner__select');
+    $(filterSelect).on('click', function () {
+        $(this).parent().find('.persolan-area__conteiner__btn-tabs').toggleClass('open');
+        if ($(this).parent().find('.persolan-area__conteiner__btn-tabs').hasClass('open')) {
+            $(this).addClass('open');
+        } else {
+            $(this).removeClass('open');
+        }
+
+        $(this).parent().find('.persolan-area__conteiner__btn-tabs .item').on('click', function () {
+            console.log($(this).parent().parent());
+            var text = $(this).text();
+            $(this).parent().parent().find('.persolan-area__conteiner__select__caption').text(text);
+            $(this).parent().removeClass('open');
+            $(this).parent().parent().find('.persolan-area__conteiner__select').removeClass('open');
+        });
+    });
+}
+
+tabs__personal__area__mobile();
+
 /***/ })
 
 /******/ });
