@@ -402,7 +402,7 @@ $('.vocabulary__mini').on('click', function () {
     });
 });
 $('.request-call,.btn__request-call').on('click', function () {
-    $('.modal__call').parents('.modal__wrap').addClass('active');
+    $('.modal__call').parents('.modal__wrap.call').addClass('active');
     $('body').addClass('no__scroll');
 
     $('.modal__call').find('.close__modal').on('click', function () {
@@ -422,6 +422,43 @@ $('.request-call__mobile__wrap__button').on('click', function () {
     if (!$('.request-call__mobile__wrap').hasClass('open')) {
         $(this).text('Заказать звонок');
     }
+});
+$('.btn__modal__termin').on('click', function () {
+    $('.modal__content').parents('.modal__wrap.modal__termin').addClass('active');
+    $('body').addClass('no__scroll');
+
+    $('.modal__content').find('.close__modal').on('click', function () {
+        $(this).parents('.modal__wrap.modal__termin').removeClass('active');
+        $('body').removeClass('no__scroll');
+    });
+});
+
+$('.btn__modal__insurance-1').on('click', function () {
+    $('.modal__content').parents('.modal__wrap.modal__insurance__wrap-1').addClass('active');
+    $('body').addClass('no__scroll');
+
+    $('.modal__content').find('.close__modal').on('click', function () {
+        $(this).parents('.modal__wrap.modal__insurance__wrap-1').removeClass('active');
+        $('body').removeClass('no__scroll');
+    });
+});
+$('.btn__modal__insurance-2').on('click', function () {
+    $('.modal__content').parents('.modal__wrap.modal__insurance__wrap-2').addClass('active');
+    $('body').addClass('no__scroll');
+
+    $('.modal__content').find('.close__modal').on('click', function () {
+        $(this).parents('.modal__wrap.modal__insurance__wrap-2').removeClass('active');
+        $('body').removeClass('no__scroll');
+    });
+});
+$('.btn__modal__insurance-3').on('click', function () {
+    $('.modal__content').parents('.modal__wrap.modal__insurance__wrap-3').addClass('active');
+    $('body').addClass('no__scroll');
+
+    $('.modal__content').find('.close__modal').on('click', function () {
+        $(this).parents('.modal__wrap.modal__insurance__wrap-3').removeClass('active');
+        $('body').removeClass('no__scroll');
+    });
 });
 
 //====================================container LK tabs
