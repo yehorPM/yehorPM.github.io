@@ -91,7 +91,15 @@ $('.insurance-products').slick({
     variableWidth: true,
     focusOnSelect: true,
     prevArrow: $('.insurance__top .prevSlick'),
-    nextArrow: $('.insurance__top .nextSlick')
+    nextArrow: $('.insurance__top .nextSlick'),
+    responsive: [{
+        breakpoint: 475,
+        settings: {
+            variableWidth: false,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        }
+    }]
 });
 
 function opacitySlide() {
