@@ -474,8 +474,8 @@ $('.btn__modal__insurance-3').on('click', function () {
 function tabs__personal__area() {
 
     $(function () {
-        $('.persolan-area__conteiner__btn-tabs .item:first').addClass('active');
-        $('.personal-area .persolan-area__conteiner__tabs:first').css('display', 'block');
+        $('.persolan-area__conteiner__btn-tabs .item.defaut').addClass('active');
+        $('.personal-area .persolan-area__conteiner__tabs.active').css('display', 'block');
     });
     //обработчик кликов по неактивным табам
     $('.persolan-area__conteiner__btn-tabs .item').not('.active').click(function () {
@@ -513,6 +513,8 @@ function tabs__personal__area__mobile() {
 }
 
 tabs__personal__area__mobile();
+
+//тестовая сетка для текста
 
 /***/ })
 
