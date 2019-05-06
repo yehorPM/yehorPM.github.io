@@ -170,6 +170,7 @@ function naw__menu() {
         }
     });
 }
+
 naw__menu();
 
 $(document).mouseup(function (e) {
@@ -192,13 +193,7 @@ $('.hero__bg__wrap').slick({
     autoplaySpeed: 4000,
     asNavFor: '.slider__wrap__hero'
 });
-// $('.slider-for').slick({
-//     slidesToShow: 1,
-//     slidesToScroll: 1,
-//     arrows: false,
-//     fade: true,
-//     asNavFor: '.slider-nav'
-// });
+
 $('.slider__wrap__hero').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -352,6 +347,7 @@ $(window).on('scroll', function () {
         $('.container-header').removeClass('mini');
     }
 });
+
 //аккордеон========================================================
 function acordion() {
     $('.open_acordion').on('click', function () {
@@ -474,8 +470,8 @@ $('.btn__modal__insurance-3').on('click', function () {
 function tabs__personal__area() {
 
     $(function () {
-        $('.persolan-area__conteiner__btn-tabs .item.defaut').addClass('active');
-        $('.personal-area .persolan-area__conteiner__tabs.active').css('display', 'block');
+        $('.persolan-area__conteiner__btn-tabs .item:first-child').addClass('active');
+        $('.personal-area .persolan-area__conteiner__tabs:first').css('display', 'block');
     });
     //обработчик кликов по неактивным табам
     $('.persolan-area__conteiner__btn-tabs .item').not('.active').click(function () {
@@ -515,6 +511,163 @@ function tabs__personal__area__mobile() {
 tabs__personal__area__mobile();
 
 //тестовая сетка для текста
+
+
+var initSlide = false;
+var widthBody = $(document).width();
+
+function slider__personalInfo() {
+
+    $(window).resize(function () {
+        var widthBody = $(window).width();
+        // console.log(initSlide);
+        // console.log(widthBody);
+        if (widthBody > 680) {
+            initSlide = false;
+        }
+        if (widthBody < 681 && initSlide === false) {
+            // console.log('resize');
+
+            $('.personal-area__wrap__left__tabs').slick({
+                responsive: [{
+                    breakpoint: 1920,
+                    settings: "unslick"
+                }, {
+                    breakpoint: 680,
+                    settings: {
+                        infinite: true,
+                        dots: false,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        autoplay: false,
+                        autoplaySpeed: 4000,
+                        asNavFor: '.profile-info__tabs'
+                    }
+                }]
+
+            }, setTimeout(function () {
+                initSlide = true;
+            }, 1000));
+            $('.profile-info__tabs').slick({
+                responsive: [{
+                    breakpoint: 680,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        asNavFor: '.personal-area__wrap__left__tabs',
+                        dots: false,
+                        centerMode: false,
+                        focusOnSelect: true
+                    }
+                }]
+            });
+        }
+    });
+    if (widthBody < 681) {
+        $('.personal-area__wrap__left__tabs').slick({
+            responsive: [{
+                breakpoint: 1920,
+                settings: "unslick"
+            }, {
+                breakpoint: 681,
+                settings: {
+                    infinite: true,
+                    dots: false,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    autoplay: false,
+                    autoplaySpeed: 4000,
+                    asNavFor: '.profile-info__tabs'
+                }
+            }]
+
+        });
+        $('.profile-info__tabs').slick({
+            responsive: [{
+                breakpoint: 681,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    asNavFor: '.personal-area__wrap__left__tabs',
+                    dots: false,
+                    centerMode: false,
+                    focusOnSelect: true
+                }
+            }]
+        });
+    }
+}
+
+slider__personalInfo();
+
+function personalInfoMobileBlock() {
+    var widthBody = $(window).width();
+    var box = $('.personal__info__mobile');
+    $(document).ready(resize__personalInfo__box());
+    $(window).resize(function () {
+        widthBody = $(window).width();
+        resize__personalInfo__box();
+    });
+
+    function resize__personalInfo__box() {
+        if (widthBody < 681) {
+            box.each(function () {
+                // console.log($(this).find('.caption'));
+                $(this).find('.button__gray').appendTo($(this).find('.caption'));
+                $(this).find('.number__policy__mobile').appendTo($(this).find('.personal__info__avatar'));
+                $(this).find('.col__mobile').appendTo($(this).find('.personal__info__desc__mobile__row'));
+            });
+        } else {
+            // $(this).find('.caption').appendTo($(this).parent)
+        }
+    }
+}
+
+personalInfoMobileBlock();
+
+function scrollXtabsPresonalArea() {
+    var boxScroll = $('.personal-area__wrap__right .persolan-area__conteiner__btn-tabs');
+    var scroll = boxScroll.scrollLeft();
+
+    $(boxScroll).find('.item').on('click', function () {
+        var item = $(this).position().left;
+        var itemFirst = $(boxScroll).find('.item:first-child').position().left;
+        itemFirst = itemFirst * -1;
+        if (true) {
+            console.log($(boxScroll).find('.item:first-child').position().left);
+            $(boxScroll).animate({
+                scrollLeft: itemFirst + item + $(this).width() / 2 - boxScroll.width() / 2 + 20
+            }, 300);
+        }
+
+        // if ($(this).position().left > 210) {
+        //     $(boxScroll).animate({
+        //         scrollLeft: $(boxScroll).offset().left + 300
+        //     }, 1000);
+        // }
+        // else if ($(this).position().left > 150) {
+        //     $(boxScroll).animate({
+        //         scrollLeft: $(boxScroll).offset().left + item - 50
+        //     }, 1000);
+        // } else if ($(this).position().left < 50) {
+        //     $(boxScroll).animate({
+        //         scrollLeft: $(boxScroll).offset().left  -100
+        //     }, 1000);
+        // }
+        //
+        // else if ($(this).position().left < 100) {
+        //     $(boxScroll).animate({
+        //         scrollLeft: $(boxScroll).offset().left + 50
+        //     }, 1000);
+        // }
+    });
+}
+
+scrollXtabsPresonalArea();
 
 /***/ })
 
