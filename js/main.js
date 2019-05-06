@@ -616,13 +616,14 @@ function personalInfoMobileBlock() {
     function resize__personalInfo__box() {
         if (widthBody < 681) {
             box.each(function () {
-                // console.log($(this).find('.caption'));
                 $(this).find('.button__gray').appendTo($(this).find('.caption'));
                 $(this).find('.number__policy__mobile').appendTo($(this).find('.personal__info__avatar'));
-                $(this).find('.col__mobile').appendTo($(this).find('.personal__info__desc__mobile__row'));
             });
         } else {
-            // $(this).find('.caption').appendTo($(this).parent)
+            box.each(function () {
+                $(this).find('.personal__info__avatar').find('.number__policy__mobile').appendTo($(this));
+                $(this).find('.caption').find('.button__gray').appendTo($(this));
+            });
         }
     }
 }
