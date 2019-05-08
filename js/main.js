@@ -114,6 +114,7 @@ function opacitySlide() {
 }
 
 opacitySlide();
+
 $('.insurance-products').on('swipe', function (event, slick, currentSlide, nextSlide) {
     opacitySlide();
 });
@@ -644,27 +645,6 @@ function scrollXtabsPresonalArea() {
                 scrollLeft: itemFirst + item + $(this).width() / 2 - boxScroll.width() / 2 + 20
             }, 300);
         }
-
-        // if ($(this).position().left > 210) {
-        //     $(boxScroll).animate({
-        //         scrollLeft: $(boxScroll).offset().left + 300
-        //     }, 1000);
-        // }
-        // else if ($(this).position().left > 150) {
-        //     $(boxScroll).animate({
-        //         scrollLeft: $(boxScroll).offset().left + item - 50
-        //     }, 1000);
-        // } else if ($(this).position().left < 50) {
-        //     $(boxScroll).animate({
-        //         scrollLeft: $(boxScroll).offset().left  -100
-        //     }, 1000);
-        // }
-        //
-        // else if ($(this).position().left < 100) {
-        //     $(boxScroll).animate({
-        //         scrollLeft: $(boxScroll).offset().left + 50
-        //     }, 1000);
-        // }
     });
 }
 
